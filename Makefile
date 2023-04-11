@@ -13,6 +13,12 @@ migrateup:
 migratedown:
 	migrate -path db/migration -database "postgresql://root:secret@localhost:5435/simple_bank?sslmode=disable" -verbose down
 
+migratereset:
+	migrate -path db/migration -database "postgresql://root:secret@localhost:5435/simple_bank?sslmode=disable" -verbose force 1
+
+test: 
+	go test -v -cover ./...
+
 sqlc: 
 	sqlc generate
 
